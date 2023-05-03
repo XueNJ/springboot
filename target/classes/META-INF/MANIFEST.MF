@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: spring-boot-demo-project
+Implementation-Version: 0.0.1
+Built-By: Administrator
+Implementation-Vendor-Id: com.training
+Build-Jdk: 1.8.0_144
+Implementation-URL: https://spring.io/projects/spring-boot/spring-boot
+ -demo-project
+Created-By: Maven Integration for Eclipse
+
