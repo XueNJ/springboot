@@ -1,0 +1,2 @@
+Insert into LOCAL.BEVERAGE_ORDER (ORDER_ID,CUSTOMER_ID,ORDER_DATE) values (1,1,to_timestamp('2023-05-03 16:10:08','YYYY-MM-DD HH24:MI:SS'));
+commit;
