@@ -1,102 +1,59 @@
-# springboot
-Project Overview
-This project is a shopping system for a mall, providing features such as shopping functionality, member management, and backend product management. It implements both frontend and backend management functionalities.
+Project Overview:
+The project is an online shopping platform that includes shopping functionality, membership management, and backend administration for managing products. The goal of the project is to create a comprehensive marketplace where users can browse and purchase products, while administrators can manage the inventory and user accounts.
 
-System Requirements
+System Requirements:
+The project requires the following system requirements:
+
 Development Tool: Spring Tool Suite 4
-Java Version: Java SE 1.8
-Spring Boot Version: 2.3.10.RELEASE
+Java version: Java SE 1.8
+Spring Boot version: 2.3.10.RELEASE
+Environment Setup:
+To set up and configure the Spring Boot project, follow these steps:
 
-Environment Configuration
-The following is the environment configuration for the Spring Boot project, including port configuration and database connection:
+Set the server port to 8088 in the application configuration file.
+Configure the servlet context path to "/training".
+Set the maximum number of threads for the Tomcat server to 200.
+Configure the database connection properties for Oracle and MySQL databases.
+Architecture Design:
+The project follows a layered architecture design, with separate components for frontend and backend functionalities. The directory structure and important components' roles and responsibilities are as follows:
 
-yaml
-Copy code
-server:
-  port: 8088
-  servlet:
-    context-path: /training
-  tomcat:
-    threads:
-      max: 200
-    uri-encoding: UTF-8
-    basedir: /data/logs/training/access_log
-    accesslog:
-      enabled: true
-      pattern: '{"i":"%{X-Forwarded-For}i","a":"%a","A":"%A","t":"%{yyyy-MM-dd HH:mm:ss.SSS}t","m":"%m","U":"%U","s":%s,"b":%b,"D":%D,"I":"%I"}'
-      suffix: .log
+Frontend Controller: Handles requests and responses related to frontend operations, such as adding items to the shopping cart, user login/logout, and member management.
+Backend Controller: Manages backend operations, including product management and order management.
+Functionality and APIs:
+The project provides the following main functionalities and APIs:
 
-management:
-  endpoint:
-    shutdown:
-      enabled: true
-  endpoints:
-    web:
-      exposure:
-        include: shutdown
+Frontend Controller:
 
-spring:
-  profiles:
-    active: local
-  jpa:
-    show-sql: true
-    hibernate:
-      ddl-auto: update
-    properties:
-      hibernate:
-        format_sql: true
+POST /training/FrontendController/addCartGoods: Adds items to the shopping cart.
+POST /training/FrontendController/clearCartGoods: Clears the shopping cart.
+POST /training/FrontendController/login: Performs user login.
+POST /training/FrontendController/loginCheck: Checks if a user is logged in.
+POST /training/FrontendController/logout: Performs user logout.
+POST /training/FrontendController/memberModify: Adds or updates member information.
+POST /training/FrontendController/memberQuery: Queries member information.
+POST /training/FrontendController/paymentGoods: Processes the payment and completes the purchase.
+GET /training/FrontendController/queryCartGoods: Retrieves the items in the shopping cart.
+POST /training/FrontendController/queryGoods: Queries products using JPA Criteria Queries.
+POST /training/FrontendController/queryOrder: Queries order history using JPA Criteria Queries.
+Backend Controller:
 
-springboot:
-  datasource:
-    oracle:
-      jdbc-url: jdbc:oracle:thin:@localhost:1521:xe
-      username: LOCAL
-      password: root
-      driverClassName: oracle.jdbc.driver.OracleDriver
-      maximumPoolSize: 2
-      connectionTimeout: 30000
-    mysql:
-      jdbc-url: jdbc:mysql://localhost:3306/local_db
-      username: root
-      password: root
-      driverClassName: com.mysql.cj.jdbc.Driver
-      maximumPoolSize: 2
-      connectionTimeout: 30000
-Architecture Design
-The project's architecture design includes directory structure and the roles and responsibilities of key components. Please provide relevant information.
+POST /training/BackendController/createGoods: Creates or updates products using JPA DML Operations.
+DELETE /training/BackendController/deleteGoods: Deletes products using JPA DML Operations.
+POST /training/BackendController/queryGoods: Queries product list using JPA Criteria Queries.
+POST /training/BackendController/queryOrder: Queries order list using JPA Criteria Queries.
+GET /training/BackendController/queryOrder_homework: (Homework) Queries order list using JPA Criteria Queries.
+Integration with Other Technologies:
+The project integrates with the following technologies:
 
-Features and APIs
-The following are detailed descriptions of the main features and APIs provided by the project, including their purposes, input/output formats, etc.:
-
-Frontend Controller
-POST /training/FrontendController/addCartGoods: Add goods to the shopping cart.
-POST /training/FrontendController/clearCartGoods: Clear the shopping cart.
-POST /training/FrontendController/login: Log in to the system.
-POST /training/FrontendController/loginCheck: Log in to the system (check session).
-POST /training/FrontendController/logout: Log out of the system.
-POST /training/FrontendController/memberModify: Add or update member information.
-POST /training/FrontendController/memberQuery: Query member information.
-POST /training/FrontendController/paymentGoods: Perform payment using JPA DML operation.
-GET /training/FrontendController/queryCartGoods: Query the shopping cart goods.
-POST /training/FrontendController/queryGoods: Query goods using JPA Criteria.
-POST /training/FrontendController/queryOrder: Query orders using JPA Criteria.
-Backend Controller
-POST /training/BackendController/createGoods: Create or update goods using JPA DML operation.
-DELETE /training/BackendController/deleteGoods: Delete goods using JPA DML operation.
-POST /training/BackendController/queryGoods: Query the list of goods using JPA Criteria.
-POST /training/BackendController/queryOrder: Query the list of orders using JPA Criteria.
-GET /training/BackendController/queryOrder_homework: (Homework) Query the list of orders using JPA Criteria.
-PUT /training/BackendController/updateGoods: Update goods using JPA DML operation.
-Other Technical Integrations
-The project integrates the following technologies:
-
-Database: Oracle and MySQL are used as database systems.
-Logging: Log4j2 is used for logging.
-Swagger UI: Springfox is used to generate Swagger documentation.
-Testing and Deployment
+Database: Oracle and MySQL databases are used to store and manage data.
+Log4j2: Logging framework for logging application events and messages.
+Swagger UI: API documentation and testing tool.
+H2 Database: In-memory database used for testing and development.
+Testing and Deployment:
 To test and deploy the project, follow these steps:
 
-Define a testing strategy including unit testing, integration testing, and system testing.
-Set up the required testing environment.
-Configure the deployment environment to ensure all necessary dependencies and configurations are properly set.
-Perform the deployment steps based on the specific requirements of the deployment environment.
+Configure the database connection properties in the project configuration.
+Set up the necessary database tables and schema.
+Run unit tests to ensure the functionality of each component.
+Build the project using Maven or the Spring Boot Maven plugin.
+Deploy the built artifact to the desired server or hosting environment.
